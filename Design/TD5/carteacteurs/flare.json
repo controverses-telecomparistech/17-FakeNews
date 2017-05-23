@@ -1,0 +1,21 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "media",
+   "children": [
+    {
+     "name": "Neutre",
+     "size": 3938,
+     "children": [
+      {"name": "Le Monde", "size": 3938},
+      {"name": "Mediapart", "size": 6714}
+     ]
+    },
+    {
+     "name": "Propagande",
+     "children": [
+      {"name": "FoxNews", "size": 3534},
+      {"name": "RT", "size": 5731}
+     ]
+    }]}]}
