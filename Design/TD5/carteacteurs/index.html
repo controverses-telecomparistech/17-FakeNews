@@ -86,7 +86,7 @@ d3.json("flare.json", function(error, root) {
 
   svg
       .style("background", color(-1))
-      .on("click", function() { zoom(root); });
+      .on("click", function(d) { if (d.attr("class") == "node--leaf") zoom(root); });
 
   zoomTo([root.x, root.y, root.r * 2 + margin]);
 
