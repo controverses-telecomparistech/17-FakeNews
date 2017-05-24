@@ -80,7 +80,7 @@ d3.json("flare.json", function(error, root) {
   d3.selectAll(".node--leaf").on("click", function(d) {
       // Affichage du popup mais ssi on a le bon focus
       if (focus == d.parent)
-          alert("meuh"),d3.event.stopPropagation();});
+          alert(d.data.description),d3.event.stopPropagation();});
 
   var node = g.selectAll("circle,text");
 

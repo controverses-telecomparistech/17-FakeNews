@@ -1,5 +1,5 @@
 {
- "name": "flare",
+ "name": "",
  "children": [
   {
    "name": "media",
@@ -8,14 +8,17 @@
      "name": "Neutre",
      "size": 3938,
      "children": [
-      {"name": "Le Monde", "size": 3938},
-      {"name": "Mediapart", "size": 6714}
+      {"name": "Le Monde", "size": 3938,"description":"Journal généraliste"},
+      {"name": "Mediapart", "size": 6714, "description":"Journal d'investigation"}
      ]
     },
     {
      "name": "Propagande",
      "children": [
-      {"name": "FoxNews", "size": 3534},
-      {"name": "RT", "size": 5731}
+      {"name": "FoxNews", "size": 3534, "description":"Propagande américaine"},
+      {"name": "RT", "size": 5731, "description":"Propagande russe"}
      ]
-    }]}]}
+    }]},
+  {"name": "juridiction","children":[
+      { "name":"Loi contre les fausses infos","size":5000},
+      { "name":"foo","size":4000}]}]}
