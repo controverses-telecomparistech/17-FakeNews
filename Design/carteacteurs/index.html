@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.carteacteurs text {
+    fill: white;
+    text-anchor: middle;
+}
+</style>
+<svg class="carteacteurs"></svg>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script>
+
+var w=600,
+    h=600;
+
+var grpwidth = 100;
+var grpheight = 100;
+var hspace=Math.floor((w-2*grpwidth)/3);
+var vspace=Math.floor((w-2*grpheight)/3);
+
+var data = [{"name":"Grp1"},{"name":"Grp2"},{"name":"Grp3"},{"name":"Grp4"}];
+
+var svg = d3.select(".carteacteurs")
+    .attr("width",w)
+    .attr("height",w);
+
+svg.append("rect").attr("width",w).attr("height",h).attr("fill","lightgray");
+var groups = svg.selectAll("g")
+    .data(data)
+    .enter().append("g")
+    .attr("transform", function(d,i) {
+        var x = hspace+((!(i%2)) ? 0 : grpwidth+hspace),
+            y = vspace+Math.floor(i/2)*(vspace+grpheight);
+        return "translate("+x+","+y+")";});
+
+groups.selectAll("rect")
+    .data(data)
+    .enter().append("rect")
+    .attr("width",grpwidth).attr("height",grpheight)
+    .attr("fill","steelblue");
+
+groups.append("text")
+    .attr("x", grpwidth/2)
+    .attr("dy","1em")
+    .text(function(d) {return d.name});
+    
+</script>
