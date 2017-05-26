@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-.carteacteurs text {
+text {
     fill: white;
     text-anchor: middle;
 }
@@ -14,11 +14,15 @@ var w=600,
     h=600;
 
 var grpwidth = 100;
-var grpheight = 100;
+var grpheight = 100; // TODO: calculer la hauteur du groupe en fct de la taille de actors
+var rowheight = 20;
 var hspace=Math.floor((w-2*grpwidth)/3);
 var vspace=Math.floor((w-2*grpheight)/3);
 
-var data = [{"name":"Grp1"},{"name":"Grp2"},{"name":"Grp3"},{"name":"Grp4"}];
+var data = [{"name":"Grp1", "actors":[{"name":"A"},{"name":"B"}]},
+{"name":"Grp2", "actors":[{"name":"C"},{"name":"D"}]},
+{"name":"Grp3", "actors":[{"name":"E"},{"name":"F"}]},
+{"name":"Grp4", "actors":[{"name":"G"},{"name":"H"}]}];
 
 var svg = d3.select(".carteacteurs")
     .attr("width",w)
@@ -33,15 +37,33 @@ var groups = svg.selectAll("g")
             y = vspace+Math.floor(i/2)*(vspace+grpheight);
         return "translate("+x+","+y+")";});
 
-groups.selectAll("rect")
-    .data(data)
-    .enter().append("rect")
-    .attr("width",grpwidth).attr("height",grpheight)
+var headers = groups.append("g").attr("class","header");
+headers.append("rect")
+    .attr("width",grpwidth).attr("height",rowheight)
     .attr("fill","steelblue");
 
-groups.append("text")
+headers.append("text")
     .attr("x", grpwidth/2)
-    .attr("dy","1em")
+    .attr("dy","0.90em")
     .text(function(d) {return d.name});
+
+var rows = groups.selectAll("g.row")
+    .data(function(d) { return d.actors; })
+    .enter().append("g")
+    .attr("class","row")
+    .attr("transform", function(d,i) {
+        var y = (i+1)*rowheight;
+        return "translate(0,"+y+")";})
+
+rows.append("rect")
+    .attr("width",grpwidth)
+    .attr("height",rowheight)
+    .attr("fill",function(d,i) { return (i%2) ? "steelblue":"lightsteelblue";})
+
+rows.append("text")
+    .attr("x",grpwidth/2)
+    .attr("dy","0.90em")
+    .attr("fill","white")
+    .text(function(d) { return d.name;})
     
 </script>
