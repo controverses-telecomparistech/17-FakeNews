@@ -4,29 +4,37 @@
 text {
     fill: white;
     text-anchor: middle;
+    font: 10 px sans-serif;
+    pointer-events: none;
 }
 </style>
 <svg class="carteacteurs"></svg>
 <script src="https://d3js.org/d3.v4.js"></script>
 <script>
 
-var w=600,
-    h=600;
-
-var grpwidth = 100;
-var grpheight = 100; // TODO: calculer la hauteur du groupe en fct de la taille de actors
-var rowheight = 20;
-var hspace=Math.floor((w-2*grpwidth)/3);
-var vspace=Math.floor((w-2*grpheight)/3);
-
 var data = [{"name":"Grp1", "actors":[{"name":"A"},{"name":"B"}]},
 {"name":"Grp2", "actors":[{"name":"C"},{"name":"D"}]},
 {"name":"Grp3", "actors":[{"name":"E"},{"name":"F"}]},
 {"name":"Grp4", "actors":[{"name":"G"},{"name":"H"}]}];
 
+var w=600,
+    h=600;
+
+// Calcul de la largeur nécessaire
+var grpwidth = 50+getTextWidth(longestString(data),"10 px sans-serif");
+// TODO: calculer la hauteur du groupe en fct de la taille de actors
+var grpheight = 100;
+var rowheight = 20;
+var maxnbactors = maxNbActors(data);
+/* TODO: choisir comment faire les alignements. A priori, comme maintenant mais
+la hauteur est variable, mais modifier la hauteur des groupes ne doit pas trifouiller
+les alignements. */
+var hspace=Math.floor((w-2*grpwidth)/3);
+var vspace=Math.floor((w-2*grpheight)/3);
+
 var svg = d3.select(".carteacteurs")
     .attr("width",w)
-    .attr("height",w);
+    .attr("height",h);
 
 svg.append("rect").attr("width",w).attr("height",h).attr("fill","lightgray");
 var groups = svg.selectAll("g")
@@ -40,7 +48,8 @@ var groups = svg.selectAll("g")
 var headers = groups.append("g").attr("class","header");
 headers.append("rect")
     .attr("width",grpwidth).attr("height",rowheight)
-    .attr("fill","steelblue");
+    .attr("fill","steelblue")
+    .on("click", function(d) { alert("On affiche les infos du groupe " + d.name); });
 
 headers.append("text")
     .attr("x", grpwidth/2)
@@ -59,11 +68,41 @@ rows.append("rect")
     .attr("width",grpwidth)
     .attr("height",rowheight)
     .attr("fill",function(d,i) { return (i%2) ? "steelblue":"lightsteelblue";})
+    .on("click", function(d) { alert("On affiche les infos de l'acteur " + d.name); });
 
 rows.append("text")
     .attr("x",grpwidth/2)
     .attr("dy","0.90em")
     .attr("fill","white")
-    .text(function(d) { return d.name;})
-    
+    .text(function(d) { return d.name;});
+
+function getTextWidth(text, font) {
+    // re-use canvas object for better performance
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    context.font = font;
+    var metrics = context.measureText(text);
+    return metrics.width;
+}
+
+// data est un array de {name, actors:[]}
+function longestString(data) {
+    var max = "";
+    for (var i = 0; i < data.length; i++) {
+        max = (data[i].name.length > max.length) ? data[i].name : max;
+        for (var j = 0; j < data[i].actors.length; j++) {
+            max = (data[i].actors[j].name.length > max.length)
+                ? data[i].actors[j].name : max;
+        }
+    }
+    return max;
+}
+
+function maxNbActors(data) {
+    var max = 0;
+    for (var i = 0; i < data.length; i++) {
+        max = Math.max(data[i].actors.length,max);
+    }
+    return max;
+}
 </script>
