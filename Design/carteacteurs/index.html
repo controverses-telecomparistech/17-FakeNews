@@ -13,7 +13,6 @@ text {
 <script>
 
 /* TODO: mettre l'acteur sélectionné en surbrillance
-   TODO: callback de clic sur un lien
    TODO: en cas de clic sur le header d'un groupe afficher les liens de tous ses acteurs
    Eventuellement, mettre en valeur les liens plutôt que n'afficher que ceux de
    l'acteur courant
@@ -96,13 +95,18 @@ rows.append("rect")
             var othername = (displayedlinks[i].a == d.name) ? displayedlinks[i].b : displayedlinks[i].a;
             var otherrect = d3.select("."+othername).node();
             var othercoords = findCoords(otherrect);
+            var txt = displayedlinks[i].txt;
             svg.append("line")
                 .attr("x1", coords[0])
                 .attr("y1", coords[1])
                 .attr("x2", othercoords[0])
                 .attr("y2", othercoords[1])
                 .attr("stroke-width",2)
-                .attr("stroke","black");
+                .attr("stroke","black")
+                .on("click", function(d) {
+                    alert(txt);
+                    d3.event.stopPropagation();
+                });
         }
         d3.event.stopPropagation();
     });
