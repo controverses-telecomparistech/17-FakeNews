@@ -12,25 +12,29 @@ text {
 <script src="https://d3js.org/d3.v4.js"></script>
 <script>
 
+// TODO: tout refaire avec canvas, c'est plus simple
 var data = [{"name":"Grp1", "actors":[{"name":"A"},{"name":"B"}]},
-{"name":"Grp2", "actors":[{"name":"C"},{"name":"D"}]},
+{"name":"Grp2", "actors":[{"name":"D"}]},
 {"name":"Grp3", "actors":[{"name":"E"},{"name":"F"}]},
 {"name":"Grp4", "actors":[{"name":"G"},{"name":"H"}]}];
+
+var links = [{"a":"B", "b":"H", "txt":"foo"},
+             {"a": "D", "b":"G", "txt":"bar"}];
 
 var w=600,
     h=600;
 
 // Calcul de la largeur nécessaire
 var grpwidth = 50+getTextWidth(longestString(data),"10 px sans-serif");
-// TODO: calculer la hauteur du groupe en fct de la taille de actors
-var grpheight = 100;
 var rowheight = 20;
 var maxnbactors = maxNbActors(data);
-/* TODO: choisir comment faire les alignements. A priori, comme maintenant mais
-la hauteur est variable, mais modifier la hauteur des groupes ne doit pas trifouiller
-les alignements. */
-var hspace=Math.floor((w-2*grpwidth)/3);
-var vspace=Math.floor((w-2*grpheight)/3);
+var nbgroups = data.length;
+var nbgroupsincol = data.length/2;
+/* Idée: partir du principe que tous les groupes font la même taille, qui est la hauteur max
+   pour calculer hspace */
+var grpheight = maxnbactors*rowheight;
+var hspace=Math.floor((w-2*grpwidth)/(1+nbgroupsincol));
+var vspace=Math.floor((w-2*grpheight)/(1+nbgroupsincol));
 
 var svg = d3.select(".carteacteurs")
     .attr("width",w)
@@ -40,9 +44,14 @@ svg.append("rect").attr("width",w).attr("height",h).attr("fill","lightgray");
 var groups = svg.selectAll("g")
     .data(data)
     .enter().append("g")
+    .attr("x", function(d,i) {
+        return hspace+((!(i%nbgroupsincol)) ? 0 : grpwidth+hspace);})
+    .attr("y", function(d,i) {
+        return y = vspace+Math.floor(i/nbgroupsincol)*(vspace+grpheight);})
+    .attr("col", function(d,i) { return i/nbgroupsincol;})
     .attr("transform", function(d,i) {
-        var x = hspace+((!(i%2)) ? 0 : grpwidth+hspace),
-            y = vspace+Math.floor(i/2)*(vspace+grpheight);
+        var x = hspace+((!(i%nbgroupsincol)) ? 0 : grpwidth+hspace),
+            y = vspace+Math.floor(i/nbgroupsincol)*(vspace+grpheight);
         return "translate("+x+","+y+")";});
 
 var headers = groups.append("g").attr("class","header");
@@ -68,7 +77,30 @@ rows.append("rect")
     .attr("width",grpwidth)
     .attr("height",rowheight)
     .attr("fill",function(d,i) { return (i%2) ? "steelblue":"lightsteelblue";})
-    .on("click", function(d) { alert("On affiche les infos de l'acteur " + d.name); });
+    .attr("class",function(d) { return d.name;})
+    .on("click", function(d,i) {
+        // TODO: effacer les liens, idem si clique pas sur un acteur
+        alert("On affiche les infos de l'acteur " + d.name);
+        var coords = findCoords(this);
+        /* TODO: tracer la ligne entre ces coordonnées et les coordonnées des acteurs qui y sont reliés
+            1) Trouver l'acteur correspondant (avec links)
+            2) Trouver les coordonnées de son groupe
+            3) Calculer les coordonnées de l'arrivée
+            4) ligne droite si colonne différente, sinon arc de cercle ? */
+        var displayedlinks = links.filter(function(entry){return entry.a == d.name || entry.b == d.name;});
+        for (var i = 0; i < displayedlinks.length; i++) {
+            var othername = (displayedlinks[i].a == d.name) ? displayedlinks[i].b : displayedlinks[i].a;
+            var otherrect = d3.select("."+othername).node();
+            var othercoords = findCoords(otherrect);
+            svg.append("line")
+                .attr("x1", coords[0])
+                .attr("y1", coords[1])
+                .attr("x2", othercoords[0])
+                .attr("y2", othercoords[1])
+                .attr("stroke-width",2)
+                .attr("stroke","black");
+        }
+    });
 
 rows.append("text")
     .attr("x",grpwidth/2)
@@ -104,5 +136,28 @@ function maxNbActors(data) {
         max = Math.max(data[i].actors.length,max);
     }
     return max;
+}
+
+function findCoords(foo) {
+    var group = foo.parentNode.parentNode;
+    var i = 0;
+    // Le calcul de i est foireux, i doit être 0 ou 1 
+    console.log(foo.__data__.name);
+    for (var j = 0; j < group.__data__.actors.length; j++) {
+        console.log(i);
+        console.log(group.__data__.actors[i].name);
+        if (group.__data__.actors[i].name == foo.__data__.name) {
+            break;
+        }
+        i++;
+    }
+    // Déterminer la transform()
+    var transform = group.attributes[3].value;
+    var coords = transform.match(/\d+/g);  
+    var x = parseInt(coords[0]);
+    var y = parseInt(coords[1]);
+    y += (1.5+i)*rowheight;
+    x += (group.attributes.col.value == "0") ? grpwidth : 0;
+    return [x,y];
 }
 </script>
