@@ -12,7 +12,13 @@ text {
 <script src="https://d3js.org/d3.v4.js"></script>
 <script>
 
-// TODO: tout refaire avec canvas, c'est plus simple
+/* TODO: mettre l'acteur sélectionné en surbrillance
+   TODO: callback de clic sur un lien
+   TODO: en cas de clic sur le header d'un groupe afficher les liens de tous ses acteurs
+   Eventuellement, mettre en valeur les liens plutôt que n'afficher que ceux de
+   l'acteur courant
+*/
+
 var data = [{"name":"Grp1", "actors":[{"name":"A"},{"name":"B"}]},
 {"name":"Grp2", "actors":[{"name":"D"}]},
 {"name":"Grp3", "actors":[{"name":"E"},{"name":"F"}]},
@@ -38,7 +44,10 @@ var vspace=Math.floor((w-2*grpheight)/(1+nbgroupsincol));
 
 var svg = d3.select(".carteacteurs")
     .attr("width",w)
-    .attr("height",h);
+    .attr("height",h)
+    .on("click", function(d) {
+        d3.selectAll("line").remove();
+    });
 
 svg.append("rect").attr("width",w).attr("height",h).attr("fill","lightgray");
 var groups = svg.selectAll("g")
@@ -79,14 +88,9 @@ rows.append("rect")
     .attr("fill",function(d,i) { return (i%2) ? "steelblue":"lightsteelblue";})
     .attr("class",function(d) { return d.name;})
     .on("click", function(d,i) {
-        // TODO: effacer les liens, idem si clique pas sur un acteur
+        d3.selectAll("line").remove();
         alert("On affiche les infos de l'acteur " + d.name);
         var coords = findCoords(this);
-        /* TODO: tracer la ligne entre ces coordonnées et les coordonnées des acteurs qui y sont reliés
-            1) Trouver l'acteur correspondant (avec links)
-            2) Trouver les coordonnées de son groupe
-            3) Calculer les coordonnées de l'arrivée
-            4) ligne droite si colonne différente, sinon arc de cercle ? */
         var displayedlinks = links.filter(function(entry){return entry.a == d.name || entry.b == d.name;});
         for (var i = 0; i < displayedlinks.length; i++) {
             var othername = (displayedlinks[i].a == d.name) ? displayedlinks[i].b : displayedlinks[i].a;
@@ -100,6 +104,7 @@ rows.append("rect")
                 .attr("stroke-width",2)
                 .attr("stroke","black");
         }
+        d3.event.stopPropagation();
     });
 
 rows.append("text")
@@ -141,11 +146,7 @@ function maxNbActors(data) {
 function findCoords(foo) {
     var group = foo.parentNode.parentNode;
     var i = 0;
-    // Le calcul de i est foireux, i doit être 0 ou 1 
-    console.log(foo.__data__.name);
     for (var j = 0; j < group.__data__.actors.length; j++) {
-        console.log(i);
-        console.log(group.__data__.actors[i].name);
         if (group.__data__.actors[i].name == foo.__data__.name) {
             break;
         }
