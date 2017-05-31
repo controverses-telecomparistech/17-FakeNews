@@ -18,10 +18,10 @@ text {
    l'acteur courant
 */
 
-var data = [{"name":"Grp1", "actors":[{"name":"A"},{"name":"B"}]},
-{"name":"Grp2", "actors":[{"name":"D"}]},
-{"name":"Grp3", "actors":[{"name":"E"},{"name":"F"}]},
-{"name":"Grp4", "actors":[{"name":"G"},{"name":"H"}]}];
+var data = [{"name":"Grp1", "txt": "Texte de Grp1", "actors":[{"name":"A","txt":"texte de A"},{"name":"B", "txt":"texte de B"}]},
+{"name":"Grp2", "txt":"texte de grp2", "actors":[{"name":"D", "txt": "texte de D"}]},
+{"name":"Grp3", "txt":"texte de grp3", "actors":[{"name":"E", "txt": "texte de E"},{"name":"F", "txt":"texte de F"}]},
+{"name":"Grp4", "txt":"texte de grp4", "actors":[{"name":"G", "txt":"texte de G"},{"name":"H","txt":"texte de H"}]}];
 
 var links = [{"a":"B", "b":"H", "txt":"foo"},
              {"a": "D", "b":"G", "txt":"bar"}];
@@ -66,7 +66,10 @@ var headers = groups.append("g").attr("class","header");
 headers.append("rect")
     .attr("width",grpwidth).attr("height",rowheight)
     .attr("fill","steelblue")
-    .on("click", function(d) { alert("On affiche les infos du groupe " + d.name); });
+    .on("click", function(d) {
+        alert(d.txt);
+        d3.event.stopPropagation();
+    });
 
 headers.append("text")
     .attr("x", grpwidth/2)
@@ -88,7 +91,7 @@ rows.append("rect")
     .attr("class",function(d) { return d.name;})
     .on("click", function(d,i) {
         d3.selectAll("line").remove();
-        alert("On affiche les infos de l'acteur " + d.name);
+        alert(d.txt);
         var coords = findCoords(this);
         var displayedlinks = links.filter(function(entry){return entry.a == d.name || entry.b == d.name;});
         for (var i = 0; i < displayedlinks.length; i++) {
