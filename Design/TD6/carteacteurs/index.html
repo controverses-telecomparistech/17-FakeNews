@@ -67,7 +67,13 @@ headers.append("rect")
     .attr("width",grpwidth).attr("height",rowheight)
     .attr("fill","steelblue")
     .on("click", function(d) {
+        d3.selectAll("line").remove();
         alert(d.txt);
+        /* TODO: afficher tous les liens du groupe
+           Méthode:
+           1) Obtenir une liste des groupes enfants du groupe ayant la classe row
+           2) Pour chacun de ces groupes, appliquer la méthode findCoords au rect contenu, et au rect du lien si existence, puis tracer la ligne
+           3) Ne pas oublier de rajouter les callbacks de clic sur chaque handler */
         d3.event.stopPropagation();
     });
 
@@ -150,6 +156,7 @@ function maxNbActors(data) {
     return max;
 }
 
+// findCoords attend un rect, correspondant à un acteur
 function findCoords(foo) {
     var group = foo.parentNode.parentNode;
     var i = 0;
