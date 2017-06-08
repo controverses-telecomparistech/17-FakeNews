@@ -147,18 +147,9 @@
 			<!-- Acteurs -->
 			<div class="content-block parallax" id="Acteurs">
 				<div class="container text-center">
-				<style>
-				text {
-				    fill: white;
-				    text-anchor: middle;
-				    font: 10 px sans-serif;
-				    pointer-events: none;
-				}
-				</style>
 					<header class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
-						<h1>Acteurs</h1>
-						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents </p>
-						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez </p>
+						<h1>Carte des acteurs</h1>
+						<p>De nombreux acteurs sont impliqués dans la controverse liée aux fake news. Globalement, on distingue deux groupes. Le premier est celui des acteurs institutionnels, parmi lesquels figurent les médias traditionnels : Le Monde et ses Décodeurs, le journal Libération, mais aussi des acteurs de la sphère politique : Emmanuel Macron, Marine Le Pen, François Fillon, et les autres personnalités impliquées dans les affaires de fake news. Le second est celui des relais de fake news : Les réseaux sociaux comme Twitter, Facebook, et les sites d'information : Sputnik, RT France par exemple. Des acteurs non institutionnels prennent aussi part à la controverse : Ojim, Reporters Sans Frontière, Acrimède.</p>
 					</header>
 				</div>
 			</div>
@@ -168,6 +159,14 @@
 			<div class="content-block" id="Carte">
 				<div class="container text-left">
 					<div class="col-md-7 col-right wow fadeInLeft" data-wow-delay=".5s">
+						<style>
+						text {
+						    fill: white;
+						    text-anchor: middle;
+						    font: 10 px sans-serif;
+						    pointer-events: none;
+						}
+						</style>
 						<svg class="carteacteurs"></svg>
 					</div>
 					<div class="col-md-5 wow fadeInRight" data-wow-delay=".5s">
@@ -182,7 +181,7 @@
 			<div class="content-block parallax" id="Debats">
 				<div class="container text-center">
 					<header class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
-						<h1>Débats</h1>
+						<h1>Arbre des débats</h1>
 						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon différents </p>
 						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents </p>
 					</header>
@@ -193,10 +192,9 @@
 			<!-- Arbre -->
 			<div class="content-block" id="Arbre">
 				<div class="container">
-					<header class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
-						<h2 class="text-center">Arbre des débats</h2>
-						<img src="images/arbre_debat.jpg">
-					</header>
+					<div class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
+						<p> Arbre </p>
+					</div>
 				</div>
 			</div>
 			<!-- #Arbre -->
@@ -206,8 +204,7 @@
 				<div class="container text-center">
 					<header class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
 						<h1>Chronologie</h1>
-						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents </p>
-						<p>?????????Vous pouvez rentrer dans la controverse selon trois chemins différents :Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents Vous pouvez rentrer dans la controverse selon trois chemins différents </p>
+						<p>Si le phénomène de diffusion de fausses nouvelles n’est pas nouveau en lui-même, son ampleur est en revanche inédite. Cela est dû en premier lieu au rôle des réseaux sociaux qui permettent la diffusion d’informations à très grande échelle dans un laps de temps très court, mais également à la quantité qui a été produite et relayée au cours d’évènements électoraux majeurs de ces derniers mois. Nous cherchons ainsi à l’aide de cette frise chronologique à retracer l’évolution de l’ampleur du phénomène de fake news ainsi que sa prise en compte par les différents acteurs et l’impact qu’elles ont pu avoir. On peut ainsi observer depuis l’affaire Lisa en Allemagne au début de l’année 2016, jusqu’à la fin de la campagne électorale pour les élections présidentielles en France en mai 2017 une importante évolution de la manière d’appréhender le problème des fake news par les différents acteurs, en particulier après le Brexit et l’élection de Donald Trump, avec l’émergence d’une volonté de signaler, et éventuellement sanctionner, les fake news.</p>
 					</header>
 					<div class="block-body wow fadeInUp" data-wow-delay=".5s" id="Frise">
 						<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1FgileJVR-VgNtkOpks3Q05oFFVu3jePnDL86gFx1FR4&font=Default&lang=fr&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
@@ -340,6 +337,8 @@
 		<script src="js/jquery.scrollTo.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/wow.min.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
+		<script src="https://d3js.org/d3-queue.v3.min.js"></script>
 		<script src="https://d3js.org/d3.v4.js"></script>
 		<script src="js/carteacteurs.js"></script>
 		<script>
