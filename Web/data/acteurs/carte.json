@@ -1,42 +1,65 @@
 [{
-		"name": "Grp1",
-		"txt": "Texte de Grp1",
+		"name": "Producteur de Fake News",
+		"txt": "Groupe très disparate, il est uniquement lié ici par sa fonction : créer les fake news. Souvent constitués d’individus agissant seuls, le but étant, comme étudié dans l’analyse scientifique, de générer un « bruit médiatique » autour de son sujet. Souvent appuyé par des groupes politiques variés, la création de la news n’est finalement pas le plus important, mais c’est sa diffusion massive, l’interpellation de personnalités importantes, et l’instauration d’un doute pour la population. Les vérificateurs ont alors forcément un temps de retard, et apparaissent comme dépassé par les évènements",
+		"actors": []
+	},
+	{
+		"name": "Relais de Fake News ",
+		"txt": "Ils se divisent en deux catégories principales, qui diffèrent selon leurs comportements par rapport aux fake news : les uns cherchent à lutter contre elles, en les considérant comme indésirables et inhérentes aux médias de masse. On retrouve dans cette catégories les grands acteurs du numérique comme Facebook, Google, Twitter. Dans la deuxième partie de relayeurs de fake news, les acteurs s’appuient sur les nouvelles peu vérifiées qu’ils présentent comme des rapports de lanceurs d’alertes, et n’excluent pas la véracité des propos. Pour autant, contrairement à une idée reçue, ils n’appuient pas les informations, ils ne font que les relayer. ",
 		"actors": [{
-			"name": "A",
-			"txt": "texte de A"
+			"name": "Facebook",
+			"txt": "Leader des réseaux sociaux mondial, le réseau social de Mark ZuckerBerg est naturellement un lieu de diffusion des fakes news, relayer à base d’autre sites internet. Cette situation c’est néanmoins amplifiée ces dernières années, et les politiques en tienne les réseaux sociaux comme responsables.Il s’est allié avec des médias de référence afin de s'en charger, notamment Le Monde en France."
+		},
+		{
+		"name": "Google",
+		"txt": "Le premier moteur de recherche mondial s’est tout d’abord illustré dans l’histoire pour ses positions pour la liberté d’expression. Malgré cela, Google confronté au fake news étudie toute les options possibles afin de les contrer, en finançant notamment des projets, comme le Décodex."
+	},
+	{
+	"name": "Twitter",
+	"txt": "La marque du tweet se caractérise par ses courts messages et ses relais instantanés, qui favorise une propagation du « bruit médiatique » . C'est ici que la plupart des rumeurs s’amplifient et que les acteurs politiques sont interpellés."
+	},{
+	"name": "Sputnik",
+	"txt": "Sputnik est un service d'information multimédia lancé officiellement par la Russie le 10 novembre 2014,Il est très critiqué par la sphère des médias traditionnels, étant vu comme une succursale du Kremlin.La version française a été lancée le 29 janvier 2015."
+	},{
+	"name": "RT France",
+	"txt": "Relai français de la chaîne d’information russe Russia Today, ils ont contesté le fait que les Décodeurs les catégorise comme site peu fiable."
+	}]
+	},
+	{
+		"name": "Acteurs institutionnels",
+		"txt": "Regroupe tous les acteurs institutionnels, et leurs points de vue sur les fake news. Exemple : le parlement français, les groupe d’actions européens. On retrouve aussi ici les actions des groupes de médias traditionnels, comme le Décodex du Monde.",
+		"actors": [{
+			"name": "Les décodeurs",
+			"txt": "La sortie de cet outil permettant de filtrer les sources considérées comme sûres fait débat : les réactions traduisent un sentiment de méfiance face à l'autoproclamation » du Monde comme média de confiance. Ainsi, on reproche aux décodeurs, en autres, leur complaisance vis à vis de certains médias"
 		}, {
-			"name": "B",
-			"txt": "texte de B"
+			"name": "Florian Philippot",
+			"txt": "Homme Politique d'extrême droite, né en 1981 à Croix, il est connu pour être le vice-président du front National depuis l'élection présidentielle de 2012."
+		},{
+			"name": "Francois Fillon",
+			"txt": "Homme Politique né le 4 mars 1954 dans la Sarthe, connu pour avoir été ministre de nombreuses fois. Le 17 mai 2007, il est nommé premier ministre de Nicolas Sarkozy, et le restera jusqu’en 2012. Il devient ensuite député, et se lance dans le combat pour la tête du parti UMP. Il se présente en 2016 comme candidat à la primaire de la droite et du centre. Il est alors sélectionné, mais la révélation d’affaires le concernant lui et sa famille le conduisent à la défaite lors de l'élection présidentielle."
+		},{
+			"name": "NVB",
+			"txt": "Femme politique de gauche, ayant été successivement porte parole de Ségolène Royal, puis de François Hollande. Elle devient ensuite ministre du droit des Femme sous la gouvernance de François Hollande. Elle se retrouve au cœur des fake news au cours d’une émission « On n’est pas couché », ou une journaliste relaie une fausse information sur sa réforme de l’orthographe."
+		},{
+			"name": "Marine Le Pen",
+			"txt": "Femme politique d'extrême droite, elle mène l’un des principaux partis de France, le Front National, après en avoir « hérité » de son père Jean-Marie Le Pen. Elle parvient jusqu’au second tour de l’élection présidentielle. Durant le dernier débat, elle évoque publiquement des arguments qui se révéleront être des fake news."
+		},{
+			"name": "Emmanuel Macron",
+			"txt": "Site créé par le gouvernement afin de proposer un outil externe pour détecter les “théories du complot”."
+		},{
+			"name": "OnTeManipule",
+			"txt": "Président de la République Française élu le 7 mai 2017. Lors de la campagne présidentielle, il est l’objet d’accusations sur ses supposés comptes aux Bahamas, notamment lors du débat d’entre-deux-tours."
 		}]
 	},
 	{
-		"name": "Grp2",
-		"txt": "texte de grp2",
+		"name": "Acteurs non institutionnels",
+		"txt": "Ensemble de la société civile cherchant à influer la pratique et/ou le traitement des fake news. Principalement traité par le groupe « Société civile », regroupe des sites comme Hoaxbusters aux Etats-Unis, et des associations sur la transparence de la vie publique.",
 		"actors": [{
-			"name": "D",
-			"txt": "texte de D"
-		}]
-	},
-	{
-		"name": "Grp3",
-		"txt": "texte de grp3",
-		"actors": [{
-			"name": "E",
-			"txt": "texte de E"
+			"name": "Reporters sans frontières",
+			"txt": "Reporters sans frontières est une organisation non-gouvernementale internationale, qui est internationalement connue  pour sa défense des droits des journalistes dans le monde. Elle se retrouve impliqué dans le débat, car avec la question des fake news vient celle de la censure des milieux d’expressions."
 		}, {
-			"name": "F",
-			"txt": "texte de F"
-		}]
-	},
-	{
-		"name": "Grp4",
-		"txt": "texte de grp4",
-		"actors": [{
-			"name": "G",
-			"txt": "texte de G"
-		}, {
-			"name": "H",
-			"txt": "texte de H"
+			"name": "Ojim",
+			"txt": "Association d’extrême droite, qui s’est créée afin de représenter une “Acrimed” orienté à l’opposé de l’échiquier politique. Elle se caractérise comme une opposante à tous les médias traditionnels."
 		}]
 	}
 ]
