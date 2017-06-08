@@ -67,7 +67,7 @@ headers.append("rect")
     .attr("width",grpwidth).attr("height",rowheight)
     .attr("fill","steelblue")
     .on("click", function(d) {
-        alert(d.txt);
+        document.getElementById("A").innerHTML = d.txt;
         var rects = d3.select(this.parentNode.parentNode).selectAll(".row").selectAll("rect").nodes();
         svg.selectAll("line").attr("stroke-width",1);
         for (var i = 0; i < rects.length; i++) {
@@ -100,7 +100,7 @@ rows.append("rect")
     .attr("fill",function(d,i) { return (i%2) ? "steelblue":"lightsteelblue";})
     .attr("class",function(d) { return d.name;})
     .on("click", function(d,i) {
-        alert(d.txt);
+        document.getElementById("A").innerHTML = d.txt;
         for (var i = 0; i < links.length; i++) {
             if (d.name == links[i].a || d.name == links[i].b)
                 svg.selectAll("line[nb="+"\""+i+"\""+"]").attr("stroke-width",2);
