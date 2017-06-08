@@ -1,0 +1,42 @@
+[{
+		"name": "Grp1",
+		"txt": "Texte de Grp1",
+		"actors": [{
+			"name": "A",
+			"txt": "texte de A"
+		}, {
+			"name": "B",
+			"txt": "texte de B"
+		}]
+	},
+	{
+		"name": "Grp2",
+		"txt": "texte de grp2",
+		"actors": [{
+			"name": "D",
+			"txt": "texte de D"
+		}]
+	},
+	{
+		"name": "Grp3",
+		"txt": "texte de grp3",
+		"actors": [{
+			"name": "E",
+			"txt": "texte de E"
+		}, {
+			"name": "F",
+			"txt": "texte de F"
+		}]
+	},
+	{
+		"name": "Grp4",
+		"txt": "texte de grp4",
+		"actors": [{
+			"name": "G",
+			"txt": "texte de G"
+		}, {
+			"name": "H",
+			"txt": "texte de H"
+		}]
+	}
+]
