@@ -12,7 +12,7 @@ var svg = d3.select(".carteacteurs")
     .attr("width",w)
     .attr("height",h)
     .on("click", function(d) {
-        d3.selectAll("line").attr("stroke-width",1);
+        d3.selectAll("line").attr("stroke-width",2);
     });
 
 svg.append("rect").attr("width",w).attr("height",h).attr("fill","lightgray");
@@ -57,12 +57,12 @@ function main(err, foo) {
         .on("click", function(d) {
             document.getElementById("A").innerHTML = d.txt;
             var rects = d3.select(this.parentNode.parentNode).selectAll(".row").selectAll("rect").nodes();
-            svg.selectAll("line").attr("stroke-width",1);
+            svg.selectAll("line").attr("stroke-width",2);
             for (var i = 0; i < rects.length; i++) {
                 for (var j = 0; j < links.length; j++) {
                     if (rects[i].__data__.name == links[j].a || rects[i].__data__.name == links[j].b) {
                         console.dir(j);
-                        svg.selectAll("line[nb="+"\""+j+"\""+"]").attr("stroke-width",2);
+                        svg.selectAll("line[nb="+"\""+j+"\""+"]").attr("stroke-width",4);
                     }
                 }
             }
@@ -89,10 +89,10 @@ function main(err, foo) {
         .attr("class",function(d) { return d.name;})
         .on("click", function(d,i) {
             document.getElementById("A").innerHTML = d.txt;
-            svg.selectAll("line").attr("stroke-width",1);
+            svg.selectAll("line").attr("stroke-width",2);
             for (var i = 0; i < links.length; i++) {
                 if (d.name == links[i].a || d.name == links[i].b)
-                    svg.selectAll("line[nb="+"\""+i+"\""+"]").attr("stroke-width",2);
+                    svg.selectAll("line[nb="+"\""+i+"\""+"]").attr("stroke-width",4);
             }
             d3.event.stopPropagation();
         });
@@ -116,8 +116,8 @@ function main(err, foo) {
             .attr("y1", coords[1])
             .attr("x2", othercoords[0])
             .attr("y2", othercoords[1])
-            .attr("stroke-width",1)
-            .attr("stroke","black")
+            .attr("stroke-width",2)
+            .attr("stroke","green")
             .attr("nb", i)
             .attr("txt", links[i].txt)
             .on("click", function(d) {
