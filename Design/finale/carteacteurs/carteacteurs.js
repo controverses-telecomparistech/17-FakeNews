@@ -89,11 +89,10 @@ function main(err, foo) {
         .attr("class",function(d) { return d.name;})
         .on("click", function(d,i) {
             document.getElementById("A").innerHTML = d.txt;
+            svg.selectAll("line").attr("stroke-width",1);
             for (var i = 0; i < links.length; i++) {
                 if (d.name == links[i].a || d.name == links[i].b)
                     svg.selectAll("line[nb="+"\""+i+"\""+"]").attr("stroke-width",2);
-                else
-                    svg.selectAll("line[nb="+"\""+i+"\""+"]").attr("stroke-width",1);
             }
             d3.event.stopPropagation();
         });
@@ -103,10 +102,11 @@ function main(err, foo) {
         .attr("dy","0.90em")
         .attr("fill","white")
         .text(function(d) { return d.name;});
-
+    
     for (var i = 0; i < links.length; i++) {
         var link1 = links[i].a;
         var link2 = links[i].b;
+        console.dir(links[i]);
         var rect1 = d3.select("."+link1).node();
         var rect2 = d3.select("."+link2).node();
         var coords = findCoords(rect1);
@@ -119,8 +119,9 @@ function main(err, foo) {
             .attr("stroke-width",1)
             .attr("stroke","black")
             .attr("nb", i)
+            .attr("txt", links[i].txt)
             .on("click", function(d) {
-                alert(links[i].txt);
+                document.getElementById("A").innerHTML = d3.select(this).attr("txt");
                 d3.event.stopPropagation();
             });
     }
