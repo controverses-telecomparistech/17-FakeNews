@@ -25,6 +25,7 @@
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3-queue.v3.min.js"></script>
 <script>
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -47,9 +48,13 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("flare.json", function(error, flare) {
+d3.queue().defer(d3.json, "flare.json")
+    .defer(d3.json, "txt.json")
+    .awaitAll(function(error, x) {
   if (error) throw error;
 
+  var flare = x[0];
+  var texte = x[1];
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;
@@ -63,12 +68,12 @@ d3.json("flare.json", function(error, flare) {
   }
 
   root.children.forEach(collapse);
-  update(root);
+  update(root,texte);
 });
 
 d3.select(self.frameElement).style("height", "800px");
 
-function update(source) {
+function update(source,texte) {
 
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
@@ -97,7 +102,12 @@ function update(source) {
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.name; })
       .style("fill-opacity", 1e-6)
-      .on("click", function(d) { d3.event.stopPropagation();});
+      .on("click", function(d) {
+          for (var i = 0; i < texte.length; i++) {
+              if (texte[i].node == d.name)
+                alert(texte[i].txt);
+          }
+          d3.event.stopPropagation();});
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
