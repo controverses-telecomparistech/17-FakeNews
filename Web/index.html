@@ -120,13 +120,13 @@
 								<a href="#Acteurs" class="recent-work" style="background-image:url(images/carte_des_acteurs_s.jpg)">
 									<span class="btn btn-o-white">Carte des acteurs</span>
 								</a>
-								<p><txt>La carte des acteurs fournit une vue d'ensemble des acteurs de la controverse. Il comporte différents groupes qui ont été séparés pour la facilité de lucture et de compréhension </txt></p>
+								<p><txt>La carte des acteurs fournit une vue d'ensemble des acteurs de la controverse. Il comporte différents groupes qui ont été séparés pour la facilité de lucture et de compréhension.</txt></p>
 							</div>
 							<div class="col-sm-4">
 								<a href="#Debats" class="recent-work" style="background-image:url(images/arbre_des_debats_s.png)">
 									<span class="btn btn-o-white">Arbre des débats</span>
 								</a>
-								<p><txt>L'arbre des débats permet de situer les 3 débats principaux concernés par la controverses et ainsi de voir les acteurs concernés </txt></p>
+								<p><txt>L'arbre des débats permet de situer les 3 débats principaux concernés par la controverses et ainsi de voir les acteurs concernés.</txt></p>
 							</div>
 							<div class="col-sm-4">
 								<a href="#Chronologie" class="recent-work" style="background-image:url(images/frise_chronologique_s.jpg)">
@@ -153,22 +153,8 @@
 
 			<!-- Carte -->
 			<div class="content-block" id="Carte">
-				<div class="container text-left">
-					<div class="col-md-7 col-right wow fadeInLeft" data-wow-delay=".5s">
-						<style>
-						text {
-						    fill: white;
-						    text-anchor: middle;
-						    font: 10 px sans-serif;
-						    pointer-events: none;
-						}
-						</style>
-						<svg class="carteacteurs"></svg>
-					</div>
-					<div class="col-md-5 wow fadeInRight" data-wow-delay=".5s">
-						<h3> Description </h3>
-						<p id="A"> Ceci correspond à la description des différents acteurs de la controverses, regroupés en 4 grands groupes</p>
-					</div>
+				<div class="container wow fadeInUp" data-wow-delay=".5s">
+					<img src="images/carte.png">
 				</div>
 			</div>
 			<!-- #Carte -->
@@ -178,6 +164,9 @@
 				<div class="container text-center">
 					<header class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
 						<h1>Arbre des débats</h1>
+						<p>Cet arbre représente le débat, ses sous-débats ainsi que les notions associées. Cliquez sur un noeud pour dévoiler son sous-arbre, et sur le texte du noeud pour afficher des informations sur celui-ci.</p>
+						<br>
+						<a href="arbre/index.html" target=_blank class="btn btn-o-white btn-lg pull-right"> Voir l'arbre complète</a>
 					</header>
 				</div>
 			</div>
@@ -187,7 +176,7 @@
 			<div class="content-block" id="Arbre">
 				<div class="container">
 					<div class="block-heading cleafix wow fadeInUp" data-wow-delay=".5s">
-						<p> Arbre </p>
+						<a href="arbre/index.html" target="_blank"><img src="images/arbre.png"></a>
 					</div>
 				</div>
 			</div>
@@ -296,7 +285,7 @@
 								<p><i><tel class="fa fa-phone" aria-hidden="true"></tel></i>Standard | tél.<br>
 								+33 1 45 81 77 77</p>
 								<p><i class="fa fa-envelope" aria-hidden="true"></i>Email ( Courriel )<Br>
-								 <lien><a class="email-link" href="mailto:berbez@telecom-paristech.fr">Gestionnaire de scolarité ??</a></lien><br>
+								 <lien><a class="email-link" href="mailto:etic.fakenews@gmail.com">ETIC2017 - Groupe 8</a></lien><br>
 								 </p>
 							</div>
 						</div>
@@ -331,10 +320,6 @@
 		<script src="js/jquery.scrollTo.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/wow.min.js"></script>
-		<script src="https://d3js.org/d3.v3.min.js"></script>
-		<script src="https://d3js.org/d3-queue.v3.min.js"></script>
-		<script src="https://d3js.org/d3.v4.js"></script>
-		<script src="js/carteacteurs.js"></script>
 		<script>
 			new WOW().init();
 		</script>
