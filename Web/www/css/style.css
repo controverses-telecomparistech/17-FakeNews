@@ -57,10 +57,10 @@ p txt {
 p about {font-size: 0.9em;}
 
 p quote {
-	font-size:1.3em;
+	font-size:1.1em;
 	font-style:italic;
 	font-weight:bold;
-	font-family:Cursive;
+	font-family:Sans-serif;
 }
 
 img {max-width: 100%;}
@@ -165,7 +165,7 @@ h6 {
 }
 
 #header.header-wrapper {
-	background: url(../images/header-bg.jpg) no-repeat center center;
+	background: url(../images/FakeNews.jpg) no-repeat center center;
 	background-size: cover;
 	display: table;
 	height: 100vh;
@@ -295,7 +295,7 @@ h6 {
 
 
 /*////////////////////////////////////////////////////////////////////////
-//  04 - Quick look
+//  04 - Accès rapide
 ///////////////////////////////////////////////////////////////////////*/
 
 .recent-work {
@@ -350,7 +350,7 @@ h6 {
 //  05 - Acteurs
 ///////////////////////////////////////////////////////////////////////*/
 #Acteurs {
-	background-image: url(../images/traffic1.jpg);
+	background-image: url(../images/newspaper_1.jpg);
 	color: #f2f2f2;
 }
 
@@ -363,7 +363,7 @@ h6 {
 //  06 - Debats
 ///////////////////////////////////////////////////////////////////////*/
 #Debats {
-    background-image: url(../images/traffic2.jpg);
+    background-image: url(../images/newspaper_2.jpg);
     color: #f2f2f2;
 }
 
@@ -373,15 +373,14 @@ h6 {
 
 
 /*////////////////////////////////////////////////////////////////////////
-//  07 - #Chronologie
+//  07 - Chronologie
 ///////////////////////////////////////////////////////////////////////*/
 #Chronologie {
-	background-image: url(../images/blue_mac2.jpg);
-	color: #f2f2f2;
+	background-image: url(../images/world.jpg);
 }
 
-#Chronologie h1, #Chronologie h2{
-    color: white;
+#Chronologie h1, #Chronologie h2 {
+    color: black;
 }
 
 
@@ -435,7 +434,6 @@ h6 {
 	padding: 40px 0 20px 0;
 	font-size: 0.85em;
 }
-
 
 
 /*////////////////////////////////////////////////////////////////////////
